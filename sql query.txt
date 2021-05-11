@@ -1,0 +1,76 @@
+create table Test(id integer, title varchar(100));
+
+insert into Test(id, title) values(1, "Hello");
+
+select * from Test;
+
+-- Your code here!
+ 
+create table  trains(s_no int,train_number int,train_name varchar(200),starts varchar(200),destination varchar(300), amount int);
+
+insert into trains values(1,123632,'venkatadhriexpress','delhi','proddutur',500);
+ 
+insert into trains values( 2,4233441,'simhadhri express','hyderabad', 'kadapa',300);
+
+insert into trains values(3,7782376,'intersity','proddutur','tirupathi',250);
+    
+DESC trains;
+
+select * from trains;
+create table  passenger(s_no int,passenger_number int,passenger_name varchar(200),starts varchar(200),destination varchar(300),cost int);
+
+insert into passenger values(1,8837226,'shiva','anthapuram','proddutur',140);
+ 
+insert into passenger values( 2,68636382,'shanker','hyderabad', 'kadapa',300);
+
+insert into passenger values(3,08798367,'pavan','kadapa','tirupathi',200);
+   
+DESC passenger;
+
+select * from passenger;
+
+select * from trains left outer join passenger on trains.train_number=passenger.passenger_name;
+
+select * from trains right outer join passenger on trains.train_number=passenger.passenger_name;
+
+select * from trains FULL outer join passenger on trains.train_number=passenger.passenger_name;
+
+select * from trains INNER  join passenger on trains.train_number=passenger.passenger_name;
+
+create table hotel(typesoffood varchar(300),starters varchar(300),cooldrinks (300),bill int);
+
+insert into hotel values ('biriyani','chicken65','sprite',1000);
+
+insert into hotel values ('gobi rice','CHILLYCHICKEN','pepsi',1200);
+
+insert into hotel values ('nodels','hyderabad chicken','sprite',1000);
+
+insert into hotel values ('egg roll','gobi','sprite',600);
+
+insert into hotel values ('chicken roll','musroom','sprite',1500);
+
+select * from hotel;
+
+ALTER table hotel ADD column special_item varchar(300);
+
+insert into hotel values ('mutton biriyani','chicken65','sprite',1300,'ice cream');
+
+select * from hotel;
+
+
+select cooldrinks from hotel where cooldrinks='sprite';
+
+
+select bill from hotel  where bill>(select bill from hotel where avg(bill)>2000));
+
+SELECT bill,no from hotel where bil>(select no from hotel where no >4);
+
+select cooldrinks,bill from hotel where cooldrinks=(select bill from hotel where bill>1000);
+
+select typesoffood,starters from hotel where bill=(select bill from hotel where bill< 1000);
+
+select max(bill) from hotel where bill<(select max(bill));
+
+select bill from hotel where bill(select bill from hotel where bill between 1000 and 2000);
+
+select count(typesoffood);
